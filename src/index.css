@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: '"Noto Sans SC"', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    background-color: #F5F0E1;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: '"Noto Serif SC"', Georgia, serif;
+    letter-spacing: 0.02em;
+  }
+
+  ::selection {
+    background-color: #A9442E;
+    color: #F5F0E1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-rust text-paper font-medium rounded-md shadow-md hover:bg-rust-light hover:shadow-lg transition-all duration-300 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-canal-deep text-canal-deep font-medium rounded-md hover:bg-canal-deep hover:text-paper transition-all duration-300 active:scale-95;
+  }
+
+  .vintage-photo {
+    @apply p-3 bg-white shadow-xl border border-earth-pale;
+    filter: sepia(0.12) contrast(1.02);
+  }
+
+  .ink-divider {
+    @apply relative w-full h-px bg-gradient-to-r from-transparent via-earth to-transparent my-12;
+  }
+
+  .ink-divider::after {
+    content: '❖';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #F5F0E1;
+    padding: 0 1rem;
+    color: #8B6914;
+    font-size: 0.875rem;
+  }
+
+  .scroll-gallery {
+    scrollbar-width: thin;
+    scrollbar-color: #8B6914 #E8DFC9;
+  }
+
+  .scroll-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-gallery::-webkit-scrollbar-track {
+    background: #E8DFC9;
+    border-radius: 4px;
+  }
+
+  .scroll-gallery::-webkit-scrollbar-thumb {
+    background: #8B6914;
+    border-radius: 4px;
+  }
+
+  .section-spacer {
+    @apply py-20 md:py-28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
