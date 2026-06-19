@@ -73,3 +73,22 @@ export interface HomeCard {
   accentColor: string;
   icon: string;
 }
+
+export interface TransitStation {
+  name: string;
+  destinations: string[];
+  walkMinutes: number;
+}
+
+export interface TransitOption {
+  type: 'subway' | 'bus';
+  name: string;
+  description: string;
+  stations: TransitStation[];
+}
+
+export interface CanalConfig {
+  sections: Partial<Record<string, { places: VisitPlace[] }>>;
+  tourRoutes: TourRoute[];
+  publicTransit: TransitOption[];
+}

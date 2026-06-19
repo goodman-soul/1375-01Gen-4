@@ -6,6 +6,7 @@ import PhotoGallery from '../components/PhotoGallery';
 import { OralQuoteList } from '../components/OralQuote';
 import { PlaceGrid } from '../components/PlaceCard';
 import { granaryData } from '../data/granary';
+import { useConfigStore } from '../hooks/useConfigStore';
 
 const heroImg = (
   'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=' +
@@ -14,6 +15,7 @@ const heroImg = (
 );
 
 function GranaryPage() {
+  const places = useConfigStore((s) => s.getPlaces('granary'));
   return (
     <div>
       <section className="relative h-[70vh] min-h-[520px] flex items-end overflow-hidden">
@@ -124,7 +126,7 @@ function GranaryPage() {
       <section className="section-spacer bg-paper">
         <div className="container">
           <SectionTitle eyebrow="VISIT TODAY" title="今天可以参观的地方" />
-          <PlaceGrid places={granaryData.places} />
+          <PlaceGrid places={places} />
           <div className="mt-14 text-center">
             <Link to="/routes" className="btn-primary">
               <Map className="w-5 h-5" />

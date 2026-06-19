@@ -6,7 +6,7 @@ import {
   MapPin, Ticket, ChevronRight, Train, Navigation, Sparkles,
 } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
-import tourRoutes, { publicTransit } from '../data/routes';
+import { useConfigStore } from '../hooks/useConfigStore';
 import type { TourRoute } from '../types';
 
 const heroImg = (
@@ -22,7 +22,9 @@ const difficultyStyle: Record<TourRoute['difficulty'], string> = {
 };
 
 function RoutesPage() {
-  const [activeRoute, setActiveRoute] = useState<string>(tourRoutes[0].id);
+  const tourRoutes = useConfigStore((s) => s.tourRoutes);
+  const publicTransit = useConfigStore((s) => s.publicTransit);
+  const [activeRoute, setActiveRoute] = useState<string>(tourRoutes[0]?.id ?? '');
   const selected = tourRoutes.find((r) => r.id === activeRoute) ?? tourRoutes[0];
 
   return (
